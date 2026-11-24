@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MY LOVE</title>
+  <meta name="description" content="A Universe That Exists Because of You.">
+  <meta name="theme-color" content="#080D19">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script defer src="js/data.js"></script>
+  <script defer src="js/animations.js"></script>
+  <script defer src="js/music.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <noscript><p class="noscript">MY LOVE membutuhkan JavaScript agar bisa dibuka.</p></noscript>
+
+  <!-- ===== Welcome ===== -->
+  <section id="welcome" class="welcome" aria-labelledby="welcome-title">
+    <div class="welcome__inner">
+      <p class="welcome__eyebrow"></p>
+      <h1 class="logo" id="welcome-title" aria-label="MY LOVE">
+        <span class="logo__word" aria-hidden="true"><span class="logo__char">M</span><span class="logo__char">Y</span></span>
+        <svg class="logo__ornament" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.8 6.600 4.900 10.700 12 12-7.100 1.300-11.200 5.400-12 12-.8-6.600-4.900-10.700-12-12 7.100-1.300 11.200-5.400 12-12z" fill="#D6B477"/></svg>
+        <span class="logo__word" aria-hidden="true"><span class="logo__char">L</span><span class="logo__char">O</span><span class="logo__char">V</span><span class="logo__char">E</span></span>
+      </h1>
+      <div class="welcome__rule" aria-hidden="true"></div>
+      <p class="welcome__tagline"></p>
+      <div class="welcome__message"></div>
+      <p class="welcome__sign"></p>
+      <button id="enter-btn" class="btn btn--gold" type="button">Enter My Universe</button>
+    </div>
+  </section>
+
+  <!-- ===== App ===== -->
+  <div id="app" class="app" hidden>
+    <header class="site-header">
+      <a href="#home" class="brand">MY LOVE</a>
+      <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Buka menu">
+        <i data-lucide="menu" class="i-menu">☰</i><i data-lucide="x" class="i-close">✕</i>
+      </button>
+      <nav id="site-nav" class="site-nav" data-open="false" aria-label="Navigasi utama">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#letters">Love Letters</a></li>
+          <li><a href="#memories">Memory Box</a></li>
+          <li><a href="#reasons">365 Reasons</a></li>
+          <li><a href="#universe">Our Universe</a></li>
+          <li><a href="#future">Our Future</a></li>
+          <li><a href="#special">Special Days</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- Home -->
+      <section class="view" id="home" data-view hidden aria-labelledby="home-title">
+        <header class="view__head">
+          <p class="eyebrow">Selamat datang di semestamu</p>
+          <h2 class="display gold-text" id="home-title" tabindex="-1"></h2>
+          <p class="lead" data-tagline></p>
+        </header>
+        <div class="grid">
+          <article class="glass card span-2 reveal" aria-labelledby="since-title">
+            <h3 class="card__title" id="since-title">Perjalanan Kita</h3>
+            <p class="muted" id="since-sub"></p>
+            <div class="units" data-since></div>
+            <p class="muted center" data-since-total></p>
+          </article>
+          <div id="home-specials" class="contents"></div>
+          <article class="glass card span-2 daily reveal" aria-labelledby="daily-title">
+            <h3 class="card__title" id="daily-title">Pesan Cinta Hari Ini</h3>
+            <blockquote class="daily__text" id="daily-text"></blockquote>
+            <p class="muted" id="daily-day"></p>
+            <a class="link" href="#reasons">Baca 365 alasan →</a>
+          </article>
+        </div>
+        <div class="block">
+          <div class="block__head"><h3 class="card__title">Kenangan Terbaru</h3><a class="link" href="#memories">Lihat semua →</a></div>
+          <div class="polaroids" id="latest-memories"></div>
+        </div>
+      </section>
+
+      <!-- Our Story -->
+      <section class="view" id="story" data-view hidden aria-labelledby="story-title">
+        <header class="view__head">
+          <p class="eyebrow">Our Story</p>
+          <h2 class="display" id="story-title" tabindex="-1">Cerita Kita</h2>
+          <p class="lead">Satu per satu, bab demi bab.</p>
+        </header>
+        <ol class="timeline" id="story-list"></ol>
+      </section>
+
+      <!-- Love Letters -->
+      <section class="view" id="letters" data-view hidden aria-labelledby="letters-title">
+        <header class="view__head">
+          <p class="eyebrow">Love Letters</p>
+          <h2 class="display" id="letters-title" tabindex="-1">Surat Cinta</h2>
+          <p class="lead">Pilih satu amplop, sesuai yang sedang kamu rasakan.</p>
+        </header>
+        <div class="letters" id="letters-grid"></div>
+      </section>
+
+      <!-- Memory Box -->
+      <section class="view" id="memories" data-view hidden aria-labelledby="memories-title">
+        <header class="view__head">
+          <p class="eyebrow">Memory Box</p>
+          <h2 class="display" id="memories-title" tabindex="-1">Kotak Kenangan</h2>
+          <p class="lead">Potongan waktu yang kita simpan.</p>
+        </header>
+        <div class="block"><h3 class="card__title">Foto</h3><div class="polaroids" id="photo-grid"></div></div>
+        <div class="block"><h3 class="card__title">Video</h3><div class="polaroids" id="video-grid"></div></div>
+      </section>
+
+      <!-- 365 Reasons -->
+      <section class="view" id="reasons" data-view hidden aria-labelledby="reasons-title">
+        <header class="view__head">
+          <p class="eyebrow">365 Reasons</p>
+          <h2 class="display" id="reasons-title" tabindex="-1">365 Alasan</h2>
+          <p class="lead">Satu alasan untuk setiap hari dalam setahun.</p>
+          <p class="muted" id="reasons-progress"></p>
+          <div class="bar" aria-hidden="true"><i id="reasons-bar"></i></div>
+        </header>
+        <div class="reasons" id="reasons-list"></div>
+      </section>
+
+      <!-- Our Universe -->
+      <section class="view" id="universe" data-view hidden aria-labelledby="universe-title">
+        <header class="view__head">
+          <p class="eyebrow">Our Universe</p>
+          <h2 class="display" id="universe-title" tabindex="-1">Semesta Kita</h2>
+          <p class="lead">Sentuh bintang-bintangnya.</p>
+        </header>
+        <div class="stage">
+          <canvas id="universe-canvas" aria-label="Peta bintang interaktif. Gunakan daftar bintang di bawahnya untuk membaca pesan."></canvas>
+        </div>
+        <div class="glass card star-panel" id="star-panel" aria-live="polite">
+          <p class="eyebrow" id="star-kicker">Pilih bintang</p>
+          <h3 class="card__title" id="star-name">Belum ada yang dipilih</h3>
+          <p id="star-message">Sentuh sebuah bintang di peta, atau pilih dari daftar di bawah.</p>
+        </div>
+        <ul class="chips" id="star-chips" aria-label="Daftar bintang"></ul>
+      </section>
+
+      <!-- Our Future -->
+      <section class="view" id="future" data-view hidden aria-labelledby="future-title">
+        <header class="view__head">
+          <p class="eyebrow">Our Future</p>
+          <h2 class="display" id="future-title" tabindex="-1">Masa Depan Kita</h2>
+          <p class="lead">Surat-surat ini akan terbuka satu per satu seiring waktu.</p>
+        </header>
+        <div class="block"><h3 class="card__title">Surat untuk Nanti</h3><div class="stack" id="future-letters"></div></div>
+        <div class="block"><h3 class="card__title">Mimpi &amp; Tujuan</h3><div class="dreams" id="dreams-list"></div></div>
+      </section>
+
+      <!-- Special Days -->
+      <section class="view" id="special" data-view hidden aria-labelledby="special-title">
+        <header class="view__head">
+          <p class="eyebrow">Special Days</p>
+          <h2 class="display" id="special-title" tabindex="-1">Hari Istimewa</h2>
+          <p class="lead">Dihitung otomatis setiap tahun, mengikuti waktu Jakarta.</p>
+        </header>
+        <div class="grid" id="special-cards"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><p id="footer-text"></p></footer>
+
+    <!-- ===== Music player ===== -->
+    <aside id="player" class="player" aria-label="Pemutar musik" data-playing="false">
+      <button id="pl-toggle" class="player__play" type="button" aria-label="Putar musik">
+        <i data-lucide="play" class="i-play">▶</i><i data-lucide="pause" class="i-pause">❚❚</i>
+      </button>
+      <div class="player__meta">
+        <p class="player__title" id="pl-title"></p>
+        <p class="player__status" id="pl-status" aria-live="polite"></p>
+      </div>
+      <button id="pl-next" class="icon-btn" type="button" aria-label="Lagu berikutnya" hidden><i data-lucide="skip-forward">⏭</i></button>
+      <button id="pl-repeat" class="icon-btn" type="button" aria-label="Ulangi" aria-pressed="false"><i data-lucide="repeat">⟲</i></button>
+      <label class="player__vol"><span class="sr-only">Volume</span><input id="pl-volume" type="range" min="0" max="1" step="0.01" value="0.6"></label>
+    </aside>
+  </div>
+
+  <!-- ===== Overlays ===== -->
+  <div id="letter-overlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="letter-title" hidden>
+    <div class="overlay__backdrop" data-close></div>
+    <button class="icon-btn overlay__close" type="button" data-close aria-label="Tutup surat"><i data-lucide="x">✕</i></button>
+    <div class="letter-stage">
+      <div class="envelope" id="envelope" aria-hidden="true">
+        <div class="envelope__back"></div>
+        <div class="envelope__paper"></div>
+        <div class="envelope__front"></div>
+        <div class="envelope__flap"></div>
+        <span class="envelope__seal">♥</span>
+      </div>
+      <article class="letter" id="letter" tabindex="-1" hidden>
+        <p class="letter__kicker" id="letter-kicker"></p>
+        <h3 id="letter-title"></h3>
+        <div class="letter__body">
+          <span class="sr-only" id="letter-sr"></span>
+          <span class="letter__ghost" id="letter-ghost" aria-hidden="true"></span>
+          <span class="letter__typed" id="letter-typed" aria-hidden="true"></span>
+        </div>
+        <button id="letter-skip" class="btn btn--ghost btn--sm" type="button" hidden>Tampilkan semua</button>
+      </article>
+    </div>
+  </div>
+
+  <div id="lightbox" class="overlay lightbox" role="dialog" aria-modal="true" aria-label="Pratinjau kenangan" hidden>
+    <div class="overlay__backdrop" data-close></div>
+    <button class="icon-btn overlay__close" type="button" data-close aria-label="Tutup"><i data-lucide="x">✕</i></button>
+    <button class="icon-btn lightbox__nav lightbox__prev" id="lb-prev" type="button" aria-label="Sebelumnya"><i data-lucide="chevron-left">‹</i></button>
+    <button class="icon-btn lightbox__nav lightbox__next" id="lb-next" type="button" aria-label="Berikutnya"><i data-lucide="chevron-right">›</i></button>
+    <figure class="lightbox__figure">
+      <div class="lightbox__media" id="lb-media"></div>
+      <figcaption><p id="lb-caption"></p><p class="muted" id="lb-date"></p><p class="muted" id="lb-count"></p></figcaption>
+    </figure>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
